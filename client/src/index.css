@@ -1,0 +1,92 @@
+* {
+	margin: 0;
+	padding: 0;
+	/*first primary --> #bd6721 ---- 26, 58%, 55%*/
+
+	--primary-color-hsl: 27, 70%, 44%;
+	--primary-color: hsl(var(--primary-color-hsl));
+	--primary-color-100: hsla(var(--primary-color-hsl), 0.1);
+	--primary-color-200: hsla(var(--primary-color-hsl), 0.2);
+	--primary-color-300: hsla(var(--primary-color-hsl), 0.3);
+	--primary-color-400: hsla(var(--primary-color-hsl), 0.4);
+	--primary-color-500: hsla(var(--primary-color-hsl), 0.5);
+	--primary-color-600: hsla(var(--primary-color-hsl), 0.6);
+	--primary-color-700: hsla(var(--primary-color-hsl), 0.7);
+	--primary-color-800: hsla(var(--primary-color-hsl), 0.8);
+	--primary-color-900: hsla(var(--primary-color-hsl), 0.9);
+
+	--accent-1-hsl: 132, 4%, 76%;
+	--accent-1: hsl(var(--accent-1-hsl));
+	--accent-1-100: hsla(var(--accent-1-hsl), 0.1);
+	--accent-1-200: hsla(var(--accent-1-hsl), 0.2);
+	--accent-1-300: hsla(var(--accent-1-hsl), 0.3);
+	--accent-1-400: hsla(var(--accent-1-hsl), 0.4);
+	--accent-1-500: hsla(var(--accent-1-hsl), 0.5);
+	--accent-1-600: hsla(var(--accent-1-hsl), 0.6);
+	--accent-1-700: hsla(var(--accent-1-hsl), 0.7);
+	--accent-1-800: hsla(var(--accent-1-hsl), 0.8);
+	--accent-1-900: hsla(var(--accent-1-hsl), 0.9);
+
+	/* #dba11c */
+	--accent-2-hsl: 18, 53%, 24%;
+	--accent-2: hsl(var(--accent-2-hsl));
+	--accent-2-100: hsla(var(--accent-2-hsl), 0.1);
+	--accent-2-200: hsla(var(--accent-2-hsl), 0.2);
+	--accent-2-300: hsla(var(--accent-2-hsl), 0.3);
+	--accent-2-400: hsla(var(--accent-2-hsl), 0.4);
+	--accent-2-500: hsla(var(--accent-2-hsl), 0.5);
+	--accent-2-600: hsla(var(--accent-2-hsl), 0.6);
+	--accent-2-700: hsla(var(--accent-2-hsl), 0.7);
+	--accent-2-800: hsla(var(--accent-2-hsl), 0.8);
+	--accent-2-900: hsla(var(--accent-2-hsl), 0.9);
+
+	/* --accent-2-900: rgb(219, 161, 28, 0.9); */
+
+	--neutral-1-hsl: 38, 25%, 6%;
+	--neutral-1: hsl(var(--neutral-1-hsl));
+	--neutral-1-100: hsla(var(--neutral-1-hsl), 0.1);
+	--neutral-1-200: hsla(var(--neutral-1-hsl), 0.2);
+	--neutral-1-300: hsla(var(--neutral-1-hsl), 0.3);
+	--neutral-1-400: hsla(var(--neutral-1-hsl), 0.4);
+	--neutral-1-500: hsla(var(--neutral-1-hsl), 0.5);
+	--neutral-1-600: hsla(var(--neutral-1-hsl), 0.6);
+	--neutral-1-700: hsla(var(--neutral-1-hsl), 0.7);
+	--neutral-1-800: hsla(var(--neutral-1-hsl), 0.8);
+	--neutral-1-900: hsla(var(--neutral-1-hsl), 0.9);
+
+	--neutral-2-hsl: 0, 0%, 95%;
+	--neutral-2: hsl(var(--neutral-2-hsl));
+	--neutral-2-100: hsla(var(--neutral-2-hsl), 0.1);
+	--neutral-2-200: hsla(var(--neutral-2-hsl), 0.2);
+	--neutral-2-300: hsla(var(--neutral-2-hsl), 0.3);
+	--neutral-2-400: hsla(var(--neutral-2-hsl), 0.4);
+	--neutral-2-500: hsla(var(--neutral-2-hsl), 0.5);
+	--neutral-2-600: hsla(var(--neutral-2-hsl), 0.6);
+	--neutral-2-700: hsla(var(--neutral-2-hsl), 0.7);
+	--neutral-2-800: hsla(var(--neutral-2-hsl), 0.8);
+	--neutral-2-900: hsla(var(--neutral-2-hsl), 0.9);
+}
+:root {
+	padding: 0;
+	margin: 0;
+}
+body {
+	max-width: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: var(--neutral-2);
+	min-height: 100vh;
+}
+.no-scroll {
+	overflow: hidden;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}

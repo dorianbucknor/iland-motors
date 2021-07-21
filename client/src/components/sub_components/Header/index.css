@@ -1,0 +1,111 @@
+.header {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	width: 100%;
+	height: 3rem;
+	background-color: var(--accent-2);
+	z-index: 99;
+}
+.header__content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+	width: 90%;
+	height: 100%;
+	position: relative;
+}
+.header__logo {
+	position: relative;
+	height: 100%;
+}
+.header__nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+.nav__link,
+.logo-name__link {
+	text-decoration: none;
+	padding: 0 0.8rem;
+	color: var(--neutral-2);
+	font-size: 0.8rem;
+	font-weight: 400;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 4rem;
+}
+.nav__link:hover {
+	background-color: var(--primary-color);
+	border: 1px solid var(--primary-color);
+}
+.nav__link:active {
+	background-color: var(--primary-color-500);
+}
+.logo-name__link {
+	color: var(--neutral-2);
+	background-color: var(--primary-color);
+	border: 1px solid var(--neutral-2);
+	font-weight: 300;
+	font-size: 1rem;
+	padding: 0.4rem 0.6rem;
+	position: absolute;
+	height: 4rem;
+}
+.header__dropDownNav {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	align-items: center;
+	position: relative;
+}
+.header__dropDownNav > h3 {
+	text-decoration: none;
+	padding: 0 0.8rem;
+	color: var(--neutral-2);
+	font-size: 0.8rem;
+	font-weight: 400;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+/* .header__dropDownNav > h3:hover {
+	background-color: var(--primary-color);
+} */
+.nav__dropDown {
+	display: none;
+	justify-content: flex-end;
+	align-items: center;
+	flex-direction: column;
+	position: absolute;
+	top: 100%;
+	background-color: var(--neutral-2);
+	width: 100%;
+	border: 1px solid var(--primary-color);
+}
+.header__dropDownNav:hover .nav__dropDown {
+	display: flex;
+}
+.dropDownNav__link:hover {
+	color: var(--neutral-2);
+	background-color: var(--primary-color-500);
+}
+.dropDownNav__link:active {
+	background-color: var(--primary-color);
+}
+.dropDownNav__link {
+	position: relative;
+	width: 100%;
+	font-size: 0.8rem;
+	height: 3rem;
+	color: var(--primary-color);
+}

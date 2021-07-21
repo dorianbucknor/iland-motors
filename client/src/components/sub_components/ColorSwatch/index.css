@@ -1,0 +1,49 @@
+.colorSwatch {
+	display: flex;
+	flex-direction: row;
+	width: max-content;
+	height: max-content;
+	gap: 0.5rem;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border-radius: 2px;
+}
+.colorSwatch__colors {
+	display: grid;
+	grid-auto-flow: column;
+	width: 3.2rem;
+	height: 1.2rem;
+}
+.selectedSwatch {
+	outline: 2px #bd6721 solid;
+}
+.selectedValue {
+	outline: 2px #bd6721 solid;
+}
+.colorSwatchGroup {
+	display: grid;
+	column-gap: 4rem;
+	column-gap: 2rem;
+
+	grid-template-columns: repeat(7, max-content);
+	grid-template-rows: auto;
+}
+.customizeSelect {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	gap: 1rem;
+}
+.customizeOption {
+	display: flex;
+	flex-direction: column;
+	width: max-content;
+	padding: 0 0.2rem;
+	cursor: pointer;
+}
+.customizeOption > p {
+	font-size: 0.8rem;
+}

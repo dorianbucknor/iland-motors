@@ -1,0 +1,196 @@
+.vehicleListBox {
+	display: flex;
+	flex-direction: column;
+	width: max-content;
+	height: max-content;
+	border-radius: 1rem;
+	background-color: white;
+}
+.vehicleListBox__list {
+	display: flex;
+	flex-direction: row;
+	border-radius: 1rem;
+	border: 2px solid rgba(128, 128, 128, 0.219);
+	height: 8rem;
+	width: 60vw;
+}
+.list__picture {
+	border-bottom-left-radius: 1rem;
+	border-top-left-radius: 1rem;
+	width: 20%;
+}
+.list__info {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+.list__price-title {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+.list__title,
+.gridBox__title {
+	font-size: 1.6rem;
+	padding-left: 0.8rem;
+	margin: 0;
+	font-weight: 400;
+	text-align: left;
+}
+
+.list__price,
+.gridBox__price {
+	font-size: 1rem;
+	font-weight: 300;
+	margin: 0;
+	padding-right: 0.8rem;
+}
+.list__mechanics {
+	display: flex;
+	flex-direction: row;
+	padding-left: 0.8rem;
+	width: 100%;
+	gap: 1rem;
+}
+.list__mechanics > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.2rem;
+}
+.list__mechanics > div > i {
+	font-size: 1rem;
+}
+.list__mechanics > div > p {
+	font-size: 0.8rem;
+}
+.gridBox__mechanics > h4 {
+	margin: 0;
+	font-weight: 500;
+	font-size: 0.8rem;
+	text-align: left;
+}
+.list__description,
+.gridBox__description {
+	margin: 0;
+	padding-left: 0.8rem;
+	padding-top: 0.5rem;
+	width: 100%;
+	text-align: left;
+	font-size: 0.8rem;
+}
+.list__info-btns,
+.gridBox__btns {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	height: 100%;
+	justify-content: space-between;
+}
+.list__btns,
+.gridBox__btns {
+	width: 25%;
+	border-bottom-right-radius: 1rem;
+	border-top-right-radius: 1rem;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-evenly;
+	padding-bottom: 0.4rem;
+}
+.list__btns {
+	align-self: flex-end;
+	padding-right: 0.5rem;
+}
+.vehicleListBox__gridBox {
+	display: flex;
+	border: 2px solid rgba(128, 128, 128, 0.219);
+	border-radius: 1rem;
+	flex-direction: column;
+	width: 20rem;
+	height: 25rem;
+}
+.gridBox__picture {
+	max-height: 45%;
+	border-top-right-radius: 1rem;
+	border-top-left-radius: 1rem;
+}
+.gridBox__info-btns {
+	height: 55%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+.gridBox__info {
+	width: 100%;
+}
+
+.gridBox__mechanics {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 0 0.6rem;
+	grid-template-rows: max-content max-content;
+	column-gap: 0.2rem;
+	row-gap: 0.2rem;
+}
+.gridBox__mechanics > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border-left: #80808062 1px solid;
+	border-bottom: #80808062 1px solid;
+}
+.gridBox__mechanics > div > p {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	font-size: 0.6rem;
+}
+.gridBox__mechanics > div > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: max-content;
+	/* justify-content: space-between; */
+	gap: 0.1rem;
+	padding: 0 0.4rem;
+}
+.gridBox__mechanics > div > div > i {
+	text-align: center;
+	font-weight: 500;
+	height: min-content;
+	font-size: 20px;
+	margin: 0;
+}
+.gridBox__mechanics > div > div > h4 {
+	text-align: left;
+	font-weight: 500;
+	font-size: 0.6rem;
+	height: min-content;
+	margin: 0;
+}
+.gridBox__info-btns {
+	width: 100%;
+}
+.gridBox__title {
+	width: 100%;
+}
+.gridBox__price {
+	width: 100%;
+}
+.gridBox__btns {
+	width: 100%;
+}

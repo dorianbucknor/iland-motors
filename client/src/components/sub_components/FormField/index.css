@@ -1,0 +1,39 @@
+.formField {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	height: max-content;
+	max-width: 100%;
+}
+.formField__input {
+	border-radius: 10px;
+	width: 90%;
+	outline: none;
+	padding: 0 1rem;
+	min-height: 2.5rem;
+	border: 2px solid rgba(128, 128, 128, 0.438);
+	font-size: 16px;
+	color: black;
+	transition: transform 0.2s linear, color 0.2s linear;
+}
+.formField__input:focus,
+.formField__label {
+	display: block;
+}
+.formField__input:focus {
+	transform: scale(1.02);
+	color: brown;
+	transition: transform 0.2s linear, color 0.2s linear;
+}
+.formField__error {
+	width: 100%;
+	text-align: left;
+	font-size: 12px;
+	height: 3ch;
+	color: red;
+}
+.formField__label {
+	display: none;
+	padding: 0 17px;
+	font-size: 14px;
+}

@@ -1,0 +1,28 @@
+.formPage {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+}
+.formPage__main {
+	width: 40%;
+	height: calc(100vh - 3rem);
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding-top: 4rem;
+	justify-content: center;
+}
+.authForm__container {
+	width: 60%;
+	border: 2px rgba(128, 128, 128, 0.253) solid;
+	border-radius: 1rem;
+	padding: 2rem 2rem;
+}
+.authForm {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.4rem;
+	width: 100%;
+}
