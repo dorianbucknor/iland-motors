@@ -107,7 +107,7 @@ function AddInfo() {
 						<TextField
 							id="street"
 							name="street"
-							label="Street:"
+							label="Street & P.O:"
 							onBlur={formik.handleBlur}
 							onChange={formik.handleChange}
 							value={formik.values.street}

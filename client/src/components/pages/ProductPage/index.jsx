@@ -13,20 +13,46 @@ import ColorSwatch, {
 	CustomizeOption,
 	CustomizeSelect,
 } from "../../sub_components/ColorSwatch";
+import { useParams, useLocation } from "react-router-dom";
+import useLocalStorage from "../../../useLocalStorage";
 
-function ProductPage({ vehicleId }) {
+function ProductPage() {
 	const productPageRef = useRef();
 	const [vehicleInfo, setVehicleInfo] = useState({});
 	const { appState } = useAppState();
-	const [{ vehicles, user, basket }, dispatch] = appState;
+	const [{ vehicles, basket }, dispatch] = appState;
+	const [user, setUser] = useLocalStorage("user", {});
+
 	const [customizations, setCustomizations] = useState({});
+	const [modelPath, setModelPath] = useState("kart/Pub-Kart");
 	const [qty, setQty] = useState(1);
+	const { pathname } = useLocation();
 
 	useEffect(() => {
-		setVehicleInfo(vehicles[vehicleId]);
-
+		setModelPath(
+			pathname
+				.split("/", 5)
+				.filter(
+					(path) =>
+						!path.includes(".com") &&
+						!path.includes("localhost") &&
+						!path.includes("127.0.0.1")
+				)
+				.join("/")
+		);
+		console.log(
+			pathname
+				.split("/", 5)
+				.filter(
+					(path) =>
+						!path.includes(".com") &&
+						!path.includes("localhost") &&
+						!path.includes("127.0.0.1")
+				)
+				.join("/")
+		);
 		return () => {};
-	}, [vehicleId, vehicles]);
+	}, [pathname]);
 
 	return (
 		<div className="productPage" ref={productPageRef}>
@@ -37,8 +63,8 @@ function ProductPage({ vehicleId }) {
 					<div className="productPage__modelViewer">
 						<ModelViewer
 							pageRef={productPageRef}
-							modelName={vehicleInfo?.vehicleNames || "model1"}
-							enable={false}
+							modelPath={modelPath}
+							enable={true}
 						/>
 					</div>
 					<div className="productPage__vehicleInfo-customization">
@@ -122,11 +148,11 @@ function ProductPage({ vehicleId }) {
 									</p> */}
 									<div>
 										<i className="flaticon-005-car-key engineIcon"></i>
-										<h4>Start Type:</h4>
+										<h4>Ignition:</h4>
 									</div>
 
 									<p>
-										{vehicleInfo?.mechanics?.starter ||
+										{vehicleInfo?.mechanics?.ignition ||
 											"Button Start"}
 									</p>
 								</div>
@@ -161,12 +187,12 @@ function ProductPage({ vehicleId }) {
 							id="add-to-basket-btn"
 							type="button"
 							fullWidth={true}
-							onButtonClick={() => {
+							onClick={() => {
 								dispatch({
 									type: "ADD_TO_BASKET",
+									uid: user.auth?.uid || null,
 									item: {
 										info: {
-											vehicleId: vehicleId || "234566",
 											description:
 												vehicleInfo?.description ||
 												"desc",
@@ -261,6 +287,12 @@ function ProductPage({ vehicleId }) {
 							>
 								{({ selectedValue, handleChange }) => (
 									<>
+										<CustomizeOption
+											picture=""
+											value="200cc"
+											selectedValue={selectedValue}
+											onChange={handleChange}
+										/>
 										<CustomizeOption
 											picture=""
 											value="250cc"

@@ -1,0 +1,11 @@
+.checkout {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+.checkout__main {
+	min-height: 100vh;
+	padding-top: 5rem;
+	width: 90%;
+}

@@ -5,22 +5,15 @@ import "./index.css";
 import { auth } from "../../../user/index";
 import { useAppState } from "../../../StateProvider";
 import useLocalStorage from "../../../useLocalStorage";
+import logo from "../../../media/pictures/ILand-Motors-Logo.png";
 
 function Header() {
 	const { appState } = useAppState();
-	const [{ user, basket }, dispatch] = appState;
+	const [state, dispatch] = appState;
+	const [user, setUser] = useLocalStorage("user", {});
 	const [trailer, setTrailer] = useLocalStorage("trailer", []);
 
 	const history = useHistory();
-
-	const arraysMatch = function (arr1, arr2) {
-		if (arr1.length !== arr2.length) return false;
-
-		for (var i = 0; i < arr1.length; i++) {
-			if (arr1[i] !== arr2[i]) return false;
-		}
-		return true;
-	};
 
 	return (
 		<div className="header">
@@ -28,11 +21,17 @@ function Header() {
 				<div className="header__logo">
 					<Link className="logo-name__link" to="/home">
 						{/* <h1>ILand Motors</h1> */}
-						ILand Motors
+						<img id="logo" src={logo} alt="ILand Motors Logo" />
 					</Link>
 				</div>
 				<div className="header__dropDownNav nav__link">
-					<h3>Vehicles</h3>
+					<h3
+						onClick={() => {
+							history.push("/store");
+						}}
+					>
+						Vehicles
+					</h3>
 					<div className="nav__dropDown">
 						<Link
 							className="nav__link dropDownNav__link"
@@ -62,14 +61,19 @@ function Header() {
 						Store
 					</Link>
 					<div
-						className="header__dropDownNav nav__link"
+						className="header__dropDownNav "
 						onClick={() => {
 							// history.push(
 							// 	user.auth ? "/my-account" : "/sign-in"
 							// );
 						}}
 					>
-						<h3>
+						<h3
+							className="nav__link"
+							onClick={() => {
+								history.push("/my-account");
+							}}
+						>
 							Hello,{" "}
 							{user.auth?.displayName.split(" ", 3)[0] ||
 								"Stranger"}
@@ -79,7 +83,7 @@ function Header() {
 								<>
 									<Link
 										className="nav__link dropDownNav__link"
-										to="/orders"
+										to="/my-account/orders"
 									>
 										Orders
 									</Link>

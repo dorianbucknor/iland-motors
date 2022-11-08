@@ -14,7 +14,7 @@ function QuickView({
 }) {
 	const popupRef = useRef();
 	const { appState } = useAppState();
-	const [state, dispatch] = appState;
+	const [{ user }, dispatch] = appState;
 	const history = useHistory();
 
 	useEffect(() => {
@@ -183,6 +183,7 @@ function QuickView({
 						onClick={() => {
 							dispatch({
 								type: "ADD_TO_BASKET",
+								uid: user.auth?.uid || null,
 								item: {
 									info: {
 										vehicleId: vehicleId || "edfcvgh6tr",

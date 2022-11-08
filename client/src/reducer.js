@@ -1,3 +1,5 @@
+import { database } from "./user";
+
 export const initialState = {
 	basket: [],
 	user: { auth: null, data: null },
@@ -7,10 +9,15 @@ export const initialState = {
 
 // Selector
 export const getBasketTotal = (basket) =>
-	basket?.reduce((amount, item) => item.info.price * item.count + amount, 0);
+	basket?.reduce(
+		(amount, item) => item.info?.price * item?.count + amount,
+		0
+	);
 
+export const getItemCount = (basket) =>
+	basket.reduce((amount, item) => amount + item.count, 0);
+    
 const reducer = (state, action) => {
-	console.log("reducer");
 	switch (action.type) {
 		case "ADD_TO_BASKET":
 			let tempBasket = [...state.basket];
@@ -36,6 +43,12 @@ const reducer = (state, action) => {
 			} else {
 				tempBasket.push(action.item);
 			}
+			if (action.uid)
+				database
+					.collection("users")
+					.doc(action.uid)
+					.set({ trailer: tempBasket }, { merge: true })
+					.catch((error) => console.log(error));
 
 			return {
 				user: state.user,
@@ -52,6 +65,14 @@ const reducer = (state, action) => {
 			);
 
 			updatedBasket.splice(itemIndex, 1, action.item);
+
+			if (action.uid)
+				database
+					.collection("users")
+					.doc(action.uid)
+					.set({ trailer: updatedBasket }, { merge: true })
+					.catch((error) => console.log(error));
+
 			return {
 				...state,
 				basket: updatedBasket,
@@ -75,6 +96,12 @@ const reducer = (state, action) => {
 					`Cant Remove Item (id: ${action.id}) as its not in basket!`
 				);
 			}
+			if (action.uid)
+				database
+					.collection("users")
+					.doc(action.uid)
+					.set({ trailer: newBasket }, { merge: true })
+					.catch((error) => console.log(error));
 
 			return {
 				...state,

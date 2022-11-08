@@ -4,29 +4,15 @@ import { Header, Footer, Button, VehicleListBox } from "../../sub_components";
 import { useAppState } from "../../../StateProvider.jsx";
 import { Checkbox } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { getBasketTotal } from "../../../reducer.js";
+import { getBasketTotal, getItemCount } from "../../../reducer.js";
 import useLocalStorage from "../../../useLocalStorage";
 
 function Trailer() {
 	const { appState } = useAppState();
-	const [{ basket }, dispatch] = appState;
+	const [{ basket, user }, dispatch] = appState;  
 	const [subtotal, setSubtotal] = useState(0);
 	const selectRef = useRef();
 	const history = useHistory();
-	const [trailer, updateTrailer] = useLocalStorage("trailer", [...basket]);
-
-	const arraysMatch = function (arr1, arr2) {
-		if (arr1.length !== arr2.length) return false;
-
-		for (var i = 0; i < arr1.length; i++) {
-			if (arr1[i] !== arr2[i]) return false;
-		}
-		return true;
-	};
-
-	useEffect(() => {
-		return () => {};
-	}, []);
 
 	return (
 		<div className="trailer">
@@ -223,9 +209,9 @@ function Trailer() {
 											<Button
 												// className="item__qty"
 												type="button"
-												// onButtonClick={() => {
-												// 	selectRef.current.click();
-												// }}
+												onClick={() => {
+													selectRef.current.click();
+												}}
 											>
 												{/* <label htmlFor="item-count">
 												Qty:
@@ -237,13 +223,11 @@ function Trailer() {
 													}
 													id="item-count"
 													defaultChecked={true}
-													// ref={selectRef}
-													// onClick={() =>
-													// 	console.log("click")
-													// }
+													ref={selectRef}
 													onChange={(e) => {
 														dispatch({
 															type: "UPDATE_BASKET_ITEM",
+															uid: user.auth?.uid,
 															item: {
 																info: item.info,
 																count: parseInt(
@@ -255,10 +239,7 @@ function Trailer() {
 														});
 													}}
 												>
-													<option value={1}>
-														{" "}
-														1
-													</option>
+													<option value={1}>1</option>
 													<option value={2}>2</option>
 													<option value={3}>3</option>
 													<option value={4}>4</option>
@@ -268,7 +249,7 @@ function Trailer() {
 													<option value={8}>8</option>
 													<option value={9}>9</option>
 													<option value={10}>
-														10+
+														10
 													</option>
 												</select>
 											</Button>
@@ -278,6 +259,7 @@ function Trailer() {
 												onClick={() => {
 													dispatch({
 														type: "REMOVE_FROM_BASKET",
+														uid: user.auth?.uid,
 														id: item?.id,
 													});
 												}}
@@ -296,7 +278,9 @@ function Trailer() {
 				<div className="trailer__right">
 					<div className="trailer__checkout">
 						<div className="trailer__subTotal">
-							<h4>Sub-Total ({basket.length || 0} items): </h4>
+							<h4>
+								Sub-Total ({getItemCount(basket) || 0} items):{" "}
+							</h4>
 							<b>${getBasketTotal(basket) || "0.00"}</b>
 						</div>
 						{/* <div className="trailer__deliver">

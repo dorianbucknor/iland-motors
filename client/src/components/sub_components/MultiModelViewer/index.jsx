@@ -38,7 +38,7 @@ export default function MultiModelViewer() {
 	const [toLoad, setToLoad] = useState(0);
 	const [loadPercentage, setLoadPercentage] = useState(0);
 
-	const models = ["Old School"];
+	const models = ["buggy/Old-School", "kart/Pub-Kart"];
 
 	const setSceneEnv = (scene) => {
 		// /** */
@@ -75,18 +75,29 @@ export default function MultiModelViewer() {
 						scene,
 						true
 					);
-
+					// scene.blockMaterialDirtyMechanism = true;
 					/**Models */
 					let model = await SceneLoader.ImportMeshAsync(
 						"",
-						`${process.env.PUBLIC_URL}/media/models/${models[modelIndex]}/`,
+						`${process.env.PUBLIC_URL}/media/models/${models[
+							modelIndex
+						].replace("-", " ")}/`,
 						"scene.gltf",
 						scene,
 						(e) => {
-							setLoaded(e.loaded);
-							setToLoad(e.total);
+							// setLoaded(e.loaded);
+							// setToLoad(e.total);
+							let percentage = Math.round(
+								(e.loaded / e.total) * 100
+							);
+							if (percentage === Infinity || isNaN(percentage)) {
+								setLoadPercentage(0);
+							} else {
+								setLoadPercentage(percentage);
+							}
 						}
 					);
+					// scene.blockMaterialDirtyMechanism = false;
 
 					modelCamera.setTarget(model.meshes[1], true);
 					modelCamera.useAutoRotationBehavior = true;
@@ -235,17 +246,15 @@ export default function MultiModelViewer() {
 		[alpha, beta]
 	);
 
-	useEffect(() => {
-		let percentage = Math.round((loaded / toLoad) * 100);
-		if (percentage === Infinity || isNaN(percentage)) {
-			setLoadPercentage(0);
-		} else {
-			setLoadPercentage(percentage);
-		}
-		return () => {
-			setLoadPercentage(null);
-		};
-	}, [loaded, toLoad]);
+	// useEffect(() => {
+	// 	let percentage = Math.round((loaded / toLoad) * 100);
+	// 	if (percentage === Infinity || isNaN(percentage)) {
+	// 		setLoadPercentage(0);
+	// 	} else {
+	// 		setLoadPercentage(percentage);
+	// 	}
+
+	// }, [loaded, toLoad]);
 
 	return (
 		<div className="multiModelVeiwer">
@@ -308,7 +317,7 @@ export default function MultiModelViewer() {
 						<ChevronLeft fontSize="inherit" />
 					</IconButton>
 					<h1 className="multiModelVeiwer__modelTitle">
-						{models[modelIndex]}
+						{models[modelIndex].split("/", 2)[1].replace("-", " ")}
 					</h1>
 					<IconButton
 						type="button"
@@ -324,10 +333,7 @@ export default function MultiModelViewer() {
 						<ChevronRight id="ctrlBar__next" />
 					</IconButton>
 				</div>
-				<IconButton
-					title="View"
-					href="/model" /** href={`/${vehicleLink}`} */
-				>
+				<IconButton title="View" href={"/" + models[modelIndex]}>
 					<Visibility id="ctrlBar__view" />
 				</IconButton>
 			</div>

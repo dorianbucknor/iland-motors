@@ -1,9 +1,16 @@
 * {
+    /* EM13793VKF  */
 	margin: 0;
 	padding: 0;
 	/*first primary --> #bd6721 ---- 26, 58%, 55%*/
-
-	--primary-color-hsl: 27, 70%, 44%;
+	--cl1: #344960;
+	--cl2: #8c7b6e;
+	--cl3: #cc8561;
+	--cl4: #ddc9be;
+	--cl5: #e3dad0;
+	/* -  -  - -  font - Montserrat - 700, italic */
+	/* --primary-color-hsl: 27, 70%, 44%; */
+	--primary-color-hsl:20, 51%, 59%;
 	--primary-color: hsl(var(--primary-color-hsl));
 	--primary-color-100: hsla(var(--primary-color-hsl), 0.1);
 	--primary-color-200: hsla(var(--primary-color-hsl), 0.2);

@@ -7,14 +7,16 @@ import {
 	FramingBehavior,
 	Scene as SCN,
 	CubeTexture,
+	StandardMaterial,
 } from "@babylonjs/core";
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import Scene from "../Scene";
 import "@babylonjs/loaders";
 import "./index.css";
 import "@babylonjs/core/Materials/Textures/Loaders/envTextureLoader";
+import { blue } from "@material-ui/core/colors";
 
-export default function ModelViewer({ pageRef, modelName, enable }) {
+export default function ModelViewer({ pageRef, modelPath, enable }) {
 	let alpha = Math.PI / 2;
 	let beta = Math.PI / 4;
 
@@ -50,7 +52,9 @@ export default function ModelViewer({ pageRef, modelName, enable }) {
 						/**Model */
 						let model = await SceneLoader.ImportMeshAsync(
 							"",
-							`/media/models/${modelName}/`,
+							`${
+								process.env.PUBLIC_URL
+							}/media/models/${modelPath.replace("-", " ")}/`,
 							"scene.gltf",
 							scene,
 							(e) => {
@@ -58,6 +62,21 @@ export default function ModelViewer({ pageRef, modelName, enable }) {
 								setToLoad(e.total);
 							}
 						);
+
+						// const mat1 = new StandardMaterial("mat1", scene);
+						// mat1.diffuseColor = Color3.Blue();
+						// mat1.specularColor = Color3.Blue();
+						// model.meshes[1].material = mat1;
+
+						// const mat2 = new StandardMaterial("mat2", scene);
+						// mat2.diffuseColor = Color3.Red();
+						// mat2.specularColor = Color3.Red();
+						// model.meshes[2].material = mat2;
+
+						// const mat3 = new StandardMaterial("mat3", scene);
+						// mat3.diffuseColor = Color3.Yellow();
+						// mat3.specularColor = Color3.Yellow();
+						// model.meshes[3].material = mat3;
 
 						modelCamera.setTarget(model.meshes[1], true);
 						modelCamera.useAutoRotationBehavior = true;
@@ -99,7 +118,7 @@ export default function ModelViewer({ pageRef, modelName, enable }) {
 				scene.dispose();
 			}
 		},
-		[alpha, beta, enable, modelName]
+		[alpha, beta, enable, modelPath]
 	);
 
 	const onRender = useCallback(
@@ -111,8 +130,8 @@ export default function ModelViewer({ pageRef, modelName, enable }) {
 			try {
 				if (!scene.isLoading) {
 					if (loadOverlay) {
-						loadOverlay.current?.classList?.remove("show");
-						loadOverlay.current?.classList?.add("hide");
+						loadOverlay?.current?.classList?.remove("show");
+						loadOverlay?.current?.classList?.add("hide");
 					}
 
 					/**Default Camera */
@@ -125,15 +144,16 @@ export default function ModelViewer({ pageRef, modelName, enable }) {
 						scene,
 						true
 					);
+					console.log();
 
-					if (scene.activeCamera) {
-						if (canvasRef.current) {
+					if (scene?.activeCamera) {
+						if (canvasRef) {
 							canvasRef.current.addEventListener(
 								"mouseenter",
 								(e) => {
 									scene.activeCamera?.attachControl(
 										canvasRef.current,
-										false
+										true
 									);
 								}
 							);
@@ -152,8 +172,8 @@ export default function ModelViewer({ pageRef, modelName, enable }) {
 					}
 				} else {
 					if (loadOverlay) {
-						loadOverlay.current?.classList?.remove("hide");
-						loadOverlay.current?.classList?.add("show");
+						loadOverlay?.current?.classList?.remove("hide");
+						loadOverlay?.current?.classList?.add("show");
 					}
 				}
 			} catch (error) {
@@ -179,6 +199,26 @@ export default function ModelViewer({ pageRef, modelName, enable }) {
 		<div className="modelViewer">
 			<div ref={loadOverlay} className="modelViewer__loading hide">
 				Loading {loadPercentage}%
+				{/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 125">
+					Loading {loadPercentage}%
+					<defs>
+						<style>
+                            .cls-1{fill:#975f39;}
+                        </style>
+					</defs>
+					<title>Asset 1</title>
+					<g id="Layer_2" data-name="Layer 2">
+						<g id="Layer_1-2" data-name="Layer 1">
+							<path
+								style={{
+									fill: "#000",
+								}}
+								// class="cls-1"
+								d="M62.5,3A59.5,59.5,0,1,1,3,62.5,59.57,59.57,0,0,1,62.5,3m0-3A62.5,62.5,0,1,0,125,62.5,62.5,62.5,0,0,0,62.5,0Z"
+							/>
+						</g>
+					</g>
+				</svg> */}
 			</div>
 			<div className="modelViewer__scene" ref={sceneContainerRef}>
 				<Scene

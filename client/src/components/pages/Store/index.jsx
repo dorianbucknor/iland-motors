@@ -1,4 +1,4 @@
-import { IconButton } from "@material-ui/core";
+import { FormControl, IconButton, InputLabel, MenuItem, Select } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import React, { useRef } from "react";
 import { useAppState } from "../../../StateProvider";
@@ -13,7 +13,7 @@ function Store() {
 		<div className="store" ref={pageRef}>
 			<Header />
 			<div className="store__main">
-                <div className="store__feature"></div>
+				<div className="store__feature"></div>
 				<div className="store__filter">
 					<div className="filter__search">
 						{/* <label htmlFor="search">Search: </label> */}
@@ -24,43 +24,6 @@ function Store() {
 					</div>
 
 					<div className="filter__options">
-						<div className="filter__price">
-							<label htmlFor="price-range">Price Range: </label>
-							<Range max={2000000} min={200000} gap={50000} />
-						</div>
-						<div className="filter__cc">
-							<label htmlFor="cc-range">
-								Cubic Capacity Range (cc):
-							</label>
-							<Range max={1200} min={100} gap={50} />
-						</div>
-						<div className="filter__transmission">
-							<label htmlFor="transmission">Transmission: </label>
-							<select name="transmission" id="transmission">
-								<option value="automatic">Automatic</option>
-								<option value="paddleshifter">
-									Manual - Paddle Shift
-								</option>
-								<option value="stickshift">
-									Manual - Stick Shift
-								</option>
-							</select>
-						</div>
-						<div className="filter__driveTrain">
-							<label htmlFor="driveTrain">Drive Train: </label>
-							<select name="driveTrain" id="driveTrain">
-								<option value="rwd">
-									Rear Wheel Drive (RWD)
-								</option>
-								<option value="fwd">
-									Front Wheel Drive (FWD)
-								</option>
-								<option value="awd">
-									All Wheel Drive (AWD)
-								</option>
-								<option value="4wd">4 Wheel Drive (4WD)</option>
-							</select>
-						</div>
 						<div className="filter__vehicleType">
 							<label htmlFor="vehicleType">Vehicle Type: </label>
 							<select name="vehicleType" id="vehicleType">
@@ -75,6 +38,62 @@ function Store() {
 								name="withReverse"
 								id="withReverse"
 							/>
+						</div>
+						<div className="filter__price">
+							<label htmlFor="price-range">$ </label>
+							<Range max={2000000} min={200000} gap={50000} />
+						</div>
+						<div className="filter__cc">
+							<i className="flaticon-042-crankshaft engineIcon"></i>
+							<Range max={1200} min={100} gap={50} />
+						</div>
+						<div className="filter__transmission">
+							{/* <label htmlFor="transmission">Transmission: </label> */}
+							<i className="flaticon-011-gear engineIcon"></i>
+							<FormControl fullWidth={true}>
+								<InputLabel>Transmission: </InputLabel>
+								<Select
+									id="gender"
+									name="gender"
+									fullWidth={true}
+									required={true}
+                                    
+								>
+									<MenuItem value="automatic">
+										Automatic
+									</MenuItem>
+									<MenuItem value="paddleshifter">
+										Manual - Paddle Shift
+									</MenuItem>
+									<MenuItem value="stickshift">
+										Manual - Stick Shift
+									</MenuItem>
+								</Select>
+							</FormControl>
+							{/* <select name="transmission" id="transmission">
+								<option value="automatic">Automatic</option>
+								<option value="paddleshifter">
+									Manual - Paddle Shift
+								</option>
+								<option value="stickshift">
+									Manual - Stick Shift
+								</option>
+							</select> */}
+						</div>
+						<div className="filter__driveTrain">
+							<i className="flaticon-001-chassis engineIcon"></i>
+							<select name="driveTrain" id="driveTrain">
+								<option value="rwd">
+									Rear Wheel Drive (RWD)
+								</option>
+								<option value="fwd">
+									Front Wheel Drive (FWD)
+								</option>
+								<option value="awd">
+									All Wheel Drive (AWD)
+								</option>
+								<option value="4wd">4 Wheel Drive (4WD)</option>
+							</select>
 						</div>
 					</div>
 				</div>

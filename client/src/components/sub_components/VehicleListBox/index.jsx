@@ -6,7 +6,7 @@ import QuickView from "../QuickView";
 
 function VehicleListBox({ listBox, pageRef, vehicleId, vehicleInfo }) {
 	const { appState } = useAppState();
-	const [state, dispatch] = appState;
+	const [{ user }, dispatch] = appState;
 	const [popUpOpen, setPopUpOpen] = useState(false);
 
 	return (
@@ -101,6 +101,7 @@ function VehicleListBox({ listBox, pageRef, vehicleId, vehicleInfo }) {
 								onClick={() => {
 									dispatch({
 										type: "ADD_TO_BASKET",
+										uid: user.auth?.uid || null,
 										item: {
 											info: {
 												vehicleId: vehicleId || "234",
@@ -219,6 +220,7 @@ function VehicleListBox({ listBox, pageRef, vehicleId, vehicleInfo }) {
 								onClick={() => {
 									dispatch({
 										type: "ADD_TO_BASKET",
+										uid: user.auth?.uid || null,
 										item: {
 											info: {
 												vehicleId: vehicleId || "dfhee",

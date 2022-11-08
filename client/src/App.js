@@ -21,19 +21,14 @@ import useLocalStorage from "./useLocalStorage";
 import { PrivateRoute } from "./components/sub_components";
 
 function App() {
-	const { appState, loggedIn } = useAppState();
-	const [{ basket }, dispatch] = appState;
+	const { appState } = useAppState();
+	const [{ basket, user }, dispatch] = appState;
 	const [trailer, setTrailer] = useLocalStorage("trailer", []);
-	const [user, setUser] = useLocalStorage("user", {});
+	const [loggedInUser, setUser] = useLocalStorage("user", {});
 
 	useEffect(() => {
 		auth.onAuthStateChanged(async (newUser) => {
 			if (newUser) {
-				dispatch({
-					type: "SET_USER",
-					auth: newUser,
-					data: null,
-				});
 				try {
 					let doc = await database
 						.collection("users")
@@ -41,11 +36,22 @@ function App() {
 						.get();
 					if (doc.exists) {
 						setUser({ auth: newUser, data: doc.data() });
+						dispatch({
+							type: "SET_USER",
+							auth: newUser,
+							data: doc.data(),
+						});
+						doc.data().trailer?.forEach((item) => {
+							dispatch({
+								type: "ADD_TO_BASKET",
+								item,
+							});
+						});
+                        setTrailer(doc.data().trailer);
 					}
 				} catch (error) {
 					console.log(error);
 				}
-				loggedIn.setLoggedIn(true);
 			} else {
 				dispatch({
 					type: "SET_USER",
@@ -53,15 +59,14 @@ function App() {
 					data: null,
 				});
 				setUser({ auth: null, data: null });
-				loggedIn.setLoggedIn(false);
 			}
 		});
 	}, []);
 
 	useEffect(() => {
-		window.addEventListener("beforeunload", (e) => {
-			setTrailer([...basket]);
-		});
+		// window.addEventListener("beforeunload", (e) => {
+		// 	setTrailer([...basket]);
+		// });
 		window.addEventListener("load", () => {
 			if (basket.length <= 0 && trailer.length > 0) {
 				trailer.forEach((item) => {
@@ -75,13 +80,6 @@ function App() {
 		return () => {};
 	}, [basket, trailer]);
 
-	useEffect(() => {
-		if (user.auth) {
-			loggedIn.setLoggedIn(true);
-		}
-		return () => {};
-	}, [loggedIn, user]);
-
 	return (
 		<div className="App">
 			<Router forceRefresh={false}>
@@ -92,13 +90,13 @@ function App() {
 					<Route path="/store">
 						<Store />
 					</Route>
-					<PrivateRoute
-						path="/my-account"
-						isLoggedIn={loggedIn.isLoggedIn}
-					>
+					<PrivateRoute path="/my-account/:tab">
 						<Account />
 					</PrivateRoute>
-					<Route path="/vehicle/:product">
+					<Route path="/kart/:model?">
+						<ProductPage />
+					</Route>
+					<Route path="/buggy/:model?">
 						<ProductPage />
 					</Route>
 					<Route path="/checkout">
@@ -107,10 +105,7 @@ function App() {
 					<Route path="/trailer">
 						<Trailer />
 					</Route>
-					<PrivateRoute
-						path="/add-info"
-						isLoggedIn={loggedIn.isLoggedIn}
-					>
+					<PrivateRoute path="/add-info">
 						<AddInfo />
 					</PrivateRoute>
 					<Route exact path="/sign-in">

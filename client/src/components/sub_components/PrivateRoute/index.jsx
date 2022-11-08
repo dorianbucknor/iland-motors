@@ -3,7 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 import { useAppState } from "../../../StateProvider";
 import useLocalStorage from "../../../useLocalStorage";
 
-function PrivateRoute({ children, isLoggedIn, ...rest }) {
+function PrivateRoute({ children, ...rest }) {
 	const [user, setUser] = useLocalStorage("user", {});
     
 	return (
