@@ -1,0 +1,13 @@
+.sign-in__form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 350px;
+	height: 400px;
+	background-color: black;
+}
+.sign-in__form > h1 {
+	top: 0;
+	margin-bottom: 50px;
+}

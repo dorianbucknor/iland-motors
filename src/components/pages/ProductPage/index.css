@@ -1,0 +1,167 @@
+.productPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: max-content;
+	position: relative;
+}
+.productPage__main {
+	display: flex;
+	flex-direction: column;
+	width: 90%;
+	height: max-content;
+	position: relative;
+	padding-top: 5rem;
+}
+.productPage__3dView-info {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: max-content;
+	align-items: center;
+	justify-content: space-between;
+}
+.productPage__modelViewer {
+	display: flex;
+	height: 70vh;
+	width: 60%;
+	justify-content: flex-start;
+	align-items: center;
+	position: relative;
+}
+.productPage__vehicleInfo-customization {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 30%;
+	height: 68vh;
+	max-height: 68vh;
+	padding: 0.4rem 0.8rem;
+	border: 2px solid #80808062;
+}
+.productPage__vehicleInfo {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 0.4fr 0.4fr 1.5fr 6.1fr 0.4fr;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 100%;
+	height: 100%;
+	max-height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.productPage__title {
+	text-align: left;
+	margin: 0;
+	padding: 0;
+	font-weight: 400;
+}
+.productPage__price {
+	margin: 0;
+	text-align: left;
+	font-weight: 400;
+	padding: 0;
+	font-size: 1.2rem;
+}
+.productPage__description {
+	text-align: left;
+	font-size: 0.8rem;
+}
+.productPage__mechanics {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: flex-start;
+	justify-content: center;
+	height: max-content;
+	max-height: 100%;
+	gap: 0.2rem;
+}
+.productPage__mechanics > div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border-left: #80808062 1px solid;
+	border-bottom: #80808062 1px solid;
+}
+.productPage__mechanics div > p {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	font-size: 0.8rem;
+}
+.productPage__mechanics > div > div {
+	display: flex;
+	flex-direction: row;
+	width: 9rem;
+	min-width: 9rem;
+	/* justify-content: space-between; */
+	gap: 0.8rem;
+	padding: 0 0.8rem;
+	align-items: center;
+}
+.productPage__mechanics > div > div > i {
+	text-align: center;
+	font-weight: 500;
+	margin: 0;
+}
+.productPage__mechanics > div > div > h4 {
+	text-align: left;
+	font-weight: 500;
+	font-size: 0.8rem;
+	height: min-content;
+	margin: 0;
+	/* padding: 0.4rem 0.2rem; */
+}
+
+.productPage__customize {
+	display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.productPage__customze-options {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr repeat(4, max-content);
+	width: 100%;
+	row-gap: 0.2rem;
+	column-gap: 0.2rem;
+}
+.productPage__customze-options > div {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	width: 98%;
+	border-left: #80808062 1px solid;
+	border-bottom: #80808062 1px solid;
+	padding: 0 0.4rem;
+}
+.productPage__customize > div > h3 {
+	text-align: left;
+}
+.customise__drivetrain {
+}
+.productPage__customize-btns{
+    display: flex;
+    flex-direction: row;
+}
+.productPage__featured {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}

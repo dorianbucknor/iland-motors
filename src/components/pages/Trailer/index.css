@@ -1,0 +1,134 @@
+.trailer {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	background-color: rgb(250, 250, 250);
+}
+.trailer__main {
+	padding: 4rem 0;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	width: 90%;
+	gap: 1rem;
+	min-height: 100vh;
+}
+.trailer__left {
+	width: 75%;
+}
+.trailer__items {
+	width: 100%;
+	border-radius: 1rem;
+	border: 2px solid rgba(128, 128, 128, 0.205);
+	padding-top: 1rem;
+	gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: white;
+}
+.trailer__items > h2 {
+	font-weight: 400;
+}
+.trailer__items > h3 {
+	font-weight: 400;
+	width: 90%;
+	text-align: center;
+}
+.trailer__right {
+	width: 25%;
+}
+.trailer__item {
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	padding-bottom: 0.4rem;
+	border-bottom: 1px solid rgba(128, 128, 128, 0.281);
+}
+#item-picture {
+	width: 15%;
+	height: 8rem;
+	max-height: 18rem;
+}
+#item-info {
+	display: flex;
+	flex-direction: column;
+	width: 85%;
+}
+.item__name-price {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+.item__name-price > h3 {
+	font-weight: 400;
+	font-size: 1.4rem;
+}
+#item-description {
+}
+.item__mechanics {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	row-gap: 0.5rem;
+	padding-top: 0.6rem;
+}
+.item__mechanics > div > h4 {
+	font-size: 0.8rem;
+}
+.item__mechanics > div > p {
+	font-size: 0.7rem;
+}
+.item__controls {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	gap: 1rem;
+	justify-content: center;
+	align-items: center;
+	padding-top: 1rem;
+}
+.item__qty {
+	border: 1px solid rgba(128, 128, 128, 0.329);
+	padding: 0 0.2rem;
+	border-radius: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.item__qty > label {
+	padding-right: 0.1rem;
+}
+.item__qty > select {
+	border: none;
+	outline: none;
+}
+.trailer__checkout {
+	display: flex;
+	flex-direction: column;
+	border-radius: 1rem;
+	border: 2px solid rgba(128, 128, 128, 0.205);
+	align-items: center;
+	padding: 0.2rem 0.4rem;
+	width: 90%;
+	background-color: white;
+	gap: 1rem;
+}
+.trailer__subTotal {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.trailer__subTotal > h4 {
+	font-weight: 400;
+	padding-right: 1rem;
+}
+.trailer__items > h2 {
+	text-align: left;
+	width: 90%;
+}
